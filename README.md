@@ -5,4 +5,4 @@ Parte da Aplicação Frontend do projeto da disciplina PCS3853 - Laboratório de
 Henry Jun Nishimura
 
 ## License
-Projeto open source e disponível sob a licença
+Projeto open source e disponível sob a licença MIT License
