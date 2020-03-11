@@ -11,15 +11,51 @@ class App extends Component {
 
     removerCupom = index => {
         const cupons = this.state.cupons;
+        axios.delete(`localhost:5000/cupom/${index}`)
+            .then((response) => {
+                console.log(response);
+                console.log(response.data);
+                
+                // axios.delete Broker
+            }
+            , (error) => {
+                console.log(error);
+            });
+                            
         this.setState({
             cupons: cupons.filter((cupom, i) => { 
                 return i !== index;
             })
         });
     }
+    atualizarCupom = index => {
+
+        axios.get('localhost:5000/cupom')
+            .then((response) => {
+                const cupons = response.data;
+                this.setState({ cupons });
+
+                // axios.post Dash
+            }
+            , (error) => {
+                console.log(error);
+            });
+    }
 
     adicionarCupom = cupom => {
         this.setState({cupons: [...this.state.cupons, cupom]});
+
+        // axios.post Dash 
+        axios.post('localhost:5000/cupom', { cupom })
+        .then((response) => {
+            console.log(response);
+            console.log(response.data);
+
+            // axios.post Broker
+        }
+        , (error) => {
+            console.log(error);
+        });
     }
 
     render() {
@@ -34,6 +70,7 @@ class App extends Component {
                 
                 <Table
                     dadosCupom={cupons}
+                    atualizarCupom={this.atualizarCupom}
                     removerCupom={this.removerCupom}
                 />
                 

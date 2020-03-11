@@ -9,7 +9,8 @@ const TableHeader = () => {
                 <th>Quantidade Disponibilizada</th>
                 <th>Porcentagem de Desconto</th>
                 <th>Validade</th>
-                <th>Remove</th>
+                <th>Atualizar</th>
+                <th>Remover</th>
             </tr>
         </thead>
     );
@@ -24,6 +25,7 @@ const TableBody = props => {
                 <td>{row.quantidade}</td>
                 <td>{row.desconto}</td>
                 <td>{row.validade}</td>
+                <td><button onClick={() => props.atualizarCupom(index)}>Atualizar</button></td>
                 <td><button onClick={() => props.removerCupom(index)}>Delete</button></td>
             </tr>
         );
@@ -33,11 +35,11 @@ const TableBody = props => {
 }
 
 const Table = (props) => {
-    const { dadosCupom, removerCupom } = props;
+    const { dadosCupom, atualizarCupom, removerCupom } = props;
         return (
             <table>
                 <TableHeader />
-                <TableBody dadosCupom={dadosCupom} removerCupom={removerCupom} />
+                <TableBody dadosCupom={dadosCupom} atualizarCupom={atualizarCupom} removerCupom={removerCupom} />
             </table>
         );
 }
